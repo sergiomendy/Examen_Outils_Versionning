@@ -1,0 +1,33 @@
+name: Data Preprocessing Pipeline
+
+on: [push]
+
+jobs:
+  data-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Mise en place de Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Installation de dependences
+        run: pip install -r requirements.txt
+
+      - name: Netoyage des données
+        run: |
+            echo "Processing file "
+            python preprocess.py --input_file olist_products_dataset.csv --output_file preprocessed.csv
+            
+
+      - name: Affichage Statistiques
+        run: |
+          echo "Affichage de quelques statisques"
+          python show_statistics.py --input_file preprocessed.csv
+            
+          
+          
