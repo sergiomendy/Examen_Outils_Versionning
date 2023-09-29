@@ -24,7 +24,7 @@ jobs:
             python preprocess.py --input_file olist_products_dataset.csv --output_file preprocessed.csv
             
 
-      - name: Affichage Statistiques
+      - name: Affichage quelques Statistiques
         run: |
           echo "Affichage de quelques statisques"
           python show_statistics.py --input_file preprocessed.csv
